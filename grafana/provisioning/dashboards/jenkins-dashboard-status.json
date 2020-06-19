@@ -1,0 +1,1636 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "Jobs queue speeds and rates, Executors availability, Nodes status, Jenkins and JVM resource usage, Jenkins Job Status, and lot more.",
+    "editable": true,
+    "gnetId": 9964,
+    "graphTooltip": 0,
+    "id": 7,
+    "links": [
+      {
+        "icon": "external link",
+        "tags": [],
+        "type": "dashboards"
+      }
+    ],
+    "panels": [
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "rgba(50, 172, 45, 0.97)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(245, 54, 54, 0.9)"
+        ],
+        "datasource": "Prometheus",
+        "editable": true,
+        "error": false,
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "id": 12,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": " jobs/min",
+        "postfixFontSize": "70%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(189, 31, 138, 0.18)",
+          "full": false,
+          "lineColor": "rgb(151, 31, 193)",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "rate(jenkins_job_building_duration_count[1m])",
+            "refId": "A"
+          }
+        ],
+        "thresholds": "6,10",
+        "title": "Processing speed",
+        "type": "singlestat",
+        "valueFontSize": "150%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorPostfix": false,
+        "colorPrefix": false,
+        "colorValue": true,
+        "colors": [
+          "#299c46",
+          "rgba(237, 129, 40, 0.89)",
+          "#1F60C4"
+        ],
+        "datasource": "Prometheus",
+        "decimals": 0,
+        "format": "decbytes",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "id": 15,
+        "interval": null,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0)",
+          "full": false,
+          "lineColor": "#8F3BB8",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "vm_memory_total_used",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "refId": "A"
+          }
+        ],
+        "thresholds": "0,0",
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Memory Usage",
+        "type": "singlestat",
+        "valueFontSize": "120%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": true,
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "datasource": "Prometheus",
+        "decimals": 1,
+        "editable": true,
+        "error": false,
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "id": 8,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": false,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": false
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "jenkins_health_check_score",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "refId": "A",
+            "textEditor": false
+          }
+        ],
+        "thresholds": "1,1",
+        "title": "Jenkins health",
+        "type": "singlestat",
+        "valueFontSize": "100%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "Good!",
+            "value": "1.0"
+          },
+          {
+            "op": "=",
+            "text": "Check :/",
+            "value": "*"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorPostfix": false,
+        "colorValue": true,
+        "colors": [
+          "#C4162A",
+          "#C4162A",
+          "#37872D"
+        ],
+        "datasource": "Prometheus",
+        "decimals": 0,
+        "editable": true,
+        "error": false,
+        "format": "ms",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "id": 16,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(192, 216, 255, 0.06)",
+          "full": false,
+          "lineColor": "#E02F44",
+          "show": false
+        },
+        "tableColumn": "__name__",
+        "targets": [
+          {
+            "expr": "vm_uptime_milliseconds",
+            "format": "time_series",
+            "instant": false,
+            "intervalFactor": 1,
+            "refId": "A",
+            "textEditor": false
+          }
+        ],
+        "thresholds": "0,0",
+        "title": "JVM Uptime",
+        "type": "singlestat",
+        "valueFontSize": "120%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": true,
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "datasource": "Prometheus",
+        "decimals": 1,
+        "editable": true,
+        "error": false,
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "id": 10,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": false,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": false
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "jenkins_node_offline_value",
+            "refId": "A",
+            "textEditor": false
+          }
+        ],
+        "thresholds": "0,0",
+        "title": "Jenkins nodes offline",
+        "type": "singlestat",
+        "valueFontSize": "100%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "None!",
+            "value": "0"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": false,
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "datasource": "Prometheus",
+        "editable": true,
+        "error": false,
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "id": 13,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": " jobs/min",
+        "postfixFontSize": "70%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(31, 184, 189, 0.18)",
+          "full": false,
+          "lineColor": "rgb(31, 193, 185)",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "rate(jenkins_job_queuing_duration_count[1m])",
+            "refId": "A"
+          }
+        ],
+        "thresholds": "",
+        "title": "Queued rate",
+        "type": "singlestat",
+        "valueFontSize": "150%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": true,
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "datasource": "Prometheus",
+        "decimals": 1,
+        "editable": true,
+        "error": false,
+        "format": "percent",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 0,
+          "y": 4
+        },
+        "id": 7,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(85, 189, 31, 0.18)",
+          "full": false,
+          "lineColor": "rgb(60, 193, 31)",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "(vm_memory_total_max - vm_memory_total_used) / vm_memory_total_max * 100.0",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "refId": "A",
+            "textEditor": false
+          }
+        ],
+        "thresholds": "30,10",
+        "title": "JVM free memory",
+        "type": "singlestat",
+        "valueFontSize": "100%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorPostfix": false,
+        "colorValue": true,
+        "colors": [
+          "#37872D",
+          "#F2CC0C",
+          "#F2CC0C"
+        ],
+        "datasource": "Prometheus",
+        "decimals": null,
+        "editable": true,
+        "error": false,
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 4,
+          "y": 4
+        },
+        "id": 18,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(242, 204, 12, 0.11)",
+          "full": false,
+          "lineColor": "#F2CC0C",
+          "show": true
+        },
+        "tableColumn": "__name__",
+        "targets": [
+          {
+            "expr": "jenkins_node_builds_count",
+            "format": "time_series",
+            "instant": false,
+            "intervalFactor": 1,
+            "refId": "A",
+            "textEditor": false
+          }
+        ],
+        "thresholds": "1,2",
+        "title": "Total Jobs",
+        "type": "singlestat",
+        "valueFontSize": "150%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "None!",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": true,
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "datasource": "Prometheus",
+        "decimals": null,
+        "editable": true,
+        "error": false,
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 8,
+          "y": 4
+        },
+        "id": 9,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(55, 135, 45, 0.08)",
+          "full": false,
+          "lineColor": "#37872D",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "jenkins_runs_success_total",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "refId": "A",
+            "textEditor": false
+          }
+        ],
+        "thresholds": "0,0",
+        "title": "Sucessful Jobs",
+        "type": "singlestat",
+        "valueFontSize": "150%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "None!",
+            "value": "0"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorPostfix": false,
+        "colorValue": true,
+        "colors": [
+          "#37872D",
+          "#C4162A",
+          "#FA6400"
+        ],
+        "datasource": "Prometheus",
+        "decimals": null,
+        "editable": true,
+        "error": false,
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 12,
+          "y": 4
+        },
+        "id": 6,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(157, 175, 204, 0.36)",
+          "full": false,
+          "lineColor": "#FA6400",
+          "show": true
+        },
+        "tableColumn": "__name__",
+        "targets": [
+          {
+            "expr": "jenkins_job_count_value",
+            "format": "time_series",
+            "instant": false,
+            "intervalFactor": 1,
+            "refId": "A",
+            "textEditor": false
+          }
+        ],
+        "thresholds": "0,0",
+        "title": "Total Pipeline",
+        "type": "singlestat",
+        "valueFontSize": "150%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "None!",
+            "value": "0"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": true,
+        "colors": [
+          "rgba(50, 172, 45, 0.97)",
+          "#37872D",
+          "rgba(245, 54, 54, 0.9)"
+        ],
+        "datasource": "Prometheus",
+        "decimals": null,
+        "editable": true,
+        "error": false,
+        "format": "none",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 16,
+          "y": 4
+        },
+        "id": 17,
+        "interval": null,
+        "isNew": true,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(207, 19, 22, 0.49)",
+          "full": false,
+          "lineColor": "#C4162A",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "jenkins_runs_failure_total",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "refId": "A",
+            "textEditor": false
+          }
+        ],
+        "thresholds": "0,1",
+        "title": "Failed Jobs",
+        "type": "singlestat",
+        "valueFontSize": "150%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "None!",
+            "value": "0"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "colorBackground": false,
+        "colorValue": true,
+        "colors": [
+          "#299c46",
+          "rgba(237, 129, 40, 0.89)",
+          "#C4162A"
+        ],
+        "datasource": "Prometheus",
+        "format": "percent",
+        "gauge": {
+          "maxValue": 100,
+          "minValue": 0,
+          "show": false,
+          "thresholdLabels": false,
+          "thresholdMarkers": true
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 20,
+          "y": 4
+        },
+        "id": 5,
+        "interval": null,
+        "links": [],
+        "mappingType": 1,
+        "mappingTypes": [
+          {
+            "name": "value to text",
+            "value": 1
+          },
+          {
+            "name": "range to text",
+            "value": 2
+          }
+        ],
+        "maxDataPoints": 100,
+        "nullPointMode": "connected",
+        "nullText": null,
+        "options": {},
+        "postfix": "",
+        "postfixFontSize": "50%",
+        "prefix": "",
+        "prefixFontSize": "50%",
+        "rangeMaps": [
+          {
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }
+        ],
+        "sparkline": {
+          "fillColor": "rgba(31, 118, 189, 0.18)",
+          "full": false,
+          "lineColor": "rgb(31, 120, 193)",
+          "show": true
+        },
+        "tableColumn": "",
+        "targets": [
+          {
+            "expr": "vm_cpu_load",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "refId": "A"
+          }
+        ],
+        "thresholds": "50,80",
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "CPU Usage",
+        "type": "singlestat",
+        "valueFontSize": "120%",
+        "valueMaps": [
+          {
+            "op": "=",
+            "text": "N/A",
+            "value": "null"
+          }
+        ],
+        "valueName": "current"
+      },
+      {
+        "cacheTimeout": null,
+        "columns": [],
+        "datasource": "Prometheus",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 8
+        },
+        "id": 23,
+        "interval": "1s",
+        "links": [],
+        "options": {},
+        "pageSize": null,
+        "pluginVersion": "6.3.3",
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": 0,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "repo",
+            "type": "hidden"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 2,
+            "link": false,
+            "pattern": "Time",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "__name__",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "job",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "link": false,
+            "mappingType": 1,
+            "pattern": "instance",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "Jenkins Pipelines",
+            "colorMode": "cell",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "#73BF69"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "jenkins_job",
+            "thresholds": [
+              "5"
+            ],
+            "type": "string",
+            "unit": "short",
+            "valueMaps": [
+              {
+                "text": "UATY",
+                "value": "uaty"
+              },
+              {
+                "text": "UAT",
+                "value": "uat"
+              },
+              {
+                "text": "Test",
+                "value": "test"
+              },
+              {
+                "text": "Production",
+                "value": "production"
+              },
+              {
+                "text": "Dev",
+                "value": "dev"
+              },
+              {
+                "text": "H-Test",
+                "value": "harman-test"
+              },
+              {
+                "text": "H-Prod",
+                "value": "harman-prod"
+              }
+            ]
+          },
+          {
+            "alias": "Total Builds",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Value",
+            "thresholds": [],
+            "type": "string",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "expr": "default_jenkins_builds_success_build_count",
+            "format": "table",
+            "instant": true,
+            "interval": "",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Jenkins Pipelines",
+        "transform": "table",
+        "type": "table"
+      },
+      {
+        "columns": [
+          {
+            "text": "Current",
+            "value": "current"
+          }
+        ],
+        "datasource": "Prometheus",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 8,
+          "w": 7,
+          "x": 6,
+          "y": 8
+        },
+        "id": 25,
+        "interval": "1s",
+        "options": {},
+        "pageSize": null,
+        "pluginVersion": "6.3.3",
+        "repeat": null,
+        "scroll": false,
+        "showHeader": true,
+        "sort": {
+          "col": 1,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "date"
+          },
+          {
+            "alias": "Jenkins Pipelines",
+            "colorMode": "row",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "#F2495C",
+              "#73BF69"
+            ],
+            "decimals": 2,
+            "link": false,
+            "mappingType": 1,
+            "pattern": "Metric",
+            "preserveFormat": true,
+            "sanitize": true,
+            "thresholds": [
+              ""
+            ],
+            "type": "string",
+            "unit": "none",
+            "valueMaps": [
+              {
+                "text": "UATY",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"uaty\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "Production",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"production\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "H-Test",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"harman-test\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "UAT",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"uat\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "Test",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"test\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "Dev",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"dev\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "H-Prod",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"harman-prod\",job=\"jenkins\",repo=\"NA\"}"
+              }
+            ]
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Avg",
+            "thresholds": [],
+            "type": "date",
+            "unit": "short"
+          },
+          {
+            "alias": "Last Build Time",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "link": true,
+            "mappingType": 1,
+            "pattern": "Current",
+            "thresholds": [],
+            "type": "date",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "expr": "default_jenkins_builds_last_build_start_time_milliseconds",
+            "instant": true,
+            "refId": "A"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Last Build Status",
+        "transform": "timeseries_aggregations",
+        "type": "table"
+      },
+      {
+        "cacheTimeout": null,
+        "columns": [
+          {
+            "text": "Avg",
+            "value": "avg"
+          }
+        ],
+        "datasource": "Prometheus",
+        "fontSize": "100%",
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 13,
+          "y": 8
+        },
+        "id": 27,
+        "links": [],
+        "options": {},
+        "pageSize": null,
+        "pluginVersion": "6.3.3",
+        "repeat": null,
+        "scroll": true,
+        "showHeader": true,
+        "sort": {
+          "col": 1,
+          "desc": true
+        },
+        "styles": [
+          {
+            "alias": "Time",
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "pattern": "Time",
+            "type": "date"
+          },
+          {
+            "alias": "Jenkins Pipelines",
+            "colorMode": "value",
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "#F2495C",
+              "#FADE2A"
+            ],
+            "decimals": 2,
+            "link": false,
+            "mappingType": 1,
+            "pattern": "Metric",
+            "preserveFormat": true,
+            "sanitize": true,
+            "thresholds": [
+              ""
+            ],
+            "type": "string",
+            "unit": "none",
+            "valueMaps": [
+              {
+                "text": "UATY",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"uaty\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "Production",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"production\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "H-Test",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"harman-test\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "UAT",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"uat\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "Test",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"test\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "Dev",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"dev\",job=\"jenkins\",repo=\"NA\"}"
+              },
+              {
+                "text": "H-Prod",
+                "value": "default_jenkins_builds_last_build_start_time_milliseconds{instance=\"jenkins:8080\",jenkins_job=\"harman-prod\",job=\"jenkins\",repo=\"NA\"}"
+              }
+            ]
+          },
+          {
+            "alias": "",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "mappingType": 1,
+            "pattern": "Avg",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          },
+          {
+            "alias": "Last Build Time",
+            "colorMode": null,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "dateFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimals": 2,
+            "link": true,
+            "mappingType": 1,
+            "pattern": "Current",
+            "thresholds": [],
+            "type": "hidden",
+            "unit": "short"
+          }
+        ],
+        "targets": [
+          {
+            "expr": "default_jenkins_builds_last_build_start_time_milliseconds",
+            "refId": "A"
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Live Build Status",
+        "transform": "timeseries_aggregations",
+        "type": "table"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "Prometheus",
+        "editable": true,
+        "error": false,
+        "fill": 1,
+        "fillGradient": 0,
+        "grid": {},
+        "gridPos": {
+          "h": 8,
+          "w": 5,
+          "x": 19,
+          "y": 8
+        },
+        "id": 21,
+        "isNew": true,
+        "legend": {
+          "alignAsTable": false,
+          "avg": false,
+          "current": false,
+          "hideEmpty": false,
+          "hideZero": false,
+          "max": false,
+          "min": false,
+          "rightSide": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 2,
+        "links": [],
+        "nullPointMode": "connected",
+        "options": {
+          "dataLinks": []
+        },
+        "paceLength": 10,
+        "percentage": false,
+        "pointradius": 5,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "default_jenkins_builds_last_build_duration_milliseconds",
+            "format": "time_series",
+            "intervalFactor": 1,
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Job Duration",
+        "tooltip": {
+          "msResolution": false,
+          "shared": true,
+          "sort": 0,
+          "value_type": "cumulative"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "ms",
+            "label": "",
+            "logBase": 2,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": "",
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": false
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      }
+    ],
+    "refresh": "5s",
+    "schemaVersion": 19,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-5m",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "Jenkins-status",
+    "uid": "CyA28m5Wk",
+    "version": 6
+}

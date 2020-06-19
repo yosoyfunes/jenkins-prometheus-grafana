@@ -1,0 +1,71 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins_master
+    build: 
+      context: ./jenkins/
+      dockerfile: Dockerfile    
+    restart: always
+    ports:
+      - 50000:50000
+      - 8080:8080
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    networks:
+      - back-tier
+
+  prometheus:
+    image: prom/prometheus:v2.18.1
+    restart: always
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+    networks:
+      - back-tier
+
+  grafana:
+    image: grafana/grafana
+    restart: always
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./grafana/config.monitoring
+    networks:
+      - back-tier
+
+  node-exporter:
+    image: prom/node-exporter
+    restart: always
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command: 
+      - '--path.procfs=/host/proc' 
+      - '--path.sysfs=/host/sys'
+      - --collector.filesystem.ignored-mount-points
+      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    expose:
+      - 9100
+    networks:
+      - back-tier
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
+    jenkins_data: {}
+
+networks:
+  back-tier:
